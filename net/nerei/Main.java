@@ -11,21 +11,23 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        int n = in.nextInt();
-        int k = in.nextInt();
-        short q = in.nextShort();
+        int t = in.nextInt();
+        for(int a0 = 0; a0 < t; a0++){
+            int students = in.nextInt();
+            int threshold = in.nextInt();
+            int present=0;
 
-        int[] a = new int[n];
-
-        for (int i=0; i<n; i++)
-            a[(i + k) % n] = in.nextInt();
-
-        try {
-            for (int j = 0; j < q; j++) {
-                System.out.format("%d%n", a[in.nextInt()]);
+            int a[] = new int[students];
+            for(int a_i=0; a_i < students; a_i++){
+                a[a_i] = in.nextInt();
+                if (a[a_i] <= 0)
+                    present++;
             }
-        } catch (IndexOutOfBoundsException e) {
-            throw new IndexOutOfBoundsException("Index is out of bounds!");
+            if (present < threshold)
+                System.out.println("YES");
+            else
+                System.out.println("NO");
+
         }
 
         in.close();
