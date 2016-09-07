@@ -48,21 +48,24 @@ public class Main {
 
         for(int i=0;i<t;i++) {
             String s = sc.nextLine();
-            ArrayList sorted = permutations(s);
-            Collections.sort(sorted);
+            if (s.length() <= 100 && s.length() > 2) {
+                ArrayList sorted = permutations(s);
+                Collections.sort(sorted);
 
-            ListIterator iter = sorted.listIterator();
-            while(iter.hasNext()){
-                if((s.compareTo(String.valueOf(iter.next()))) >= 0){
-                    iter.remove();
+                ListIterator iter = sorted.listIterator();
+                while (iter.hasNext()) {
+                    if ((s.compareTo(String.valueOf(iter.next()))) >= 0) {
+                        iter.remove();
+                    }
                 }
+
+                if (sorted.size() == 0)
+                    System.out.println("no answer");
+                else
+                    System.out.println(sorted.get(0));
             }
-
-            if (sorted.size() == 0)
-                System.out.println("no answer");
             else
-                System.out.println(sorted.get(0));
-
+                System.out.println("no answer");
         }
         sc.close();
     }
