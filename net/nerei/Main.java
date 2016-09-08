@@ -9,35 +9,10 @@ import java.util.regex.*;
 
 public class Main {
 
-    private static ArrayList<String> permutations(String s) {
-        if (s == null) {
-            return null;
-        }
-
-        ArrayList<String> resultList = new ArrayList<>();
-
-        if (s.length() < 2) {
-            resultList.add(s);
-
-            return resultList;
-        }
-
-        int length = s.length();
-        char currentChar;
-
-        for (int i = 0; i < length; i++) {
-            currentChar = s.charAt(i);
-
-            String subString = s.substring(0, i) + s.substring(i + 1);
-
-            ArrayList<String> subPermutations = permutations(subString);
-
-            for (String item : subPermutations) {
-                resultList.add(currentChar + item);
-            }
-        }
-
-        return resultList;
+    private static void swap(char[] arr, int i, int j){
+        char t = arr[i];
+        arr[i] = arr[j];
+        arr[j] = t;
     }
 
     public static void main(String[] args) {
@@ -46,26 +21,36 @@ public class Main {
         sc.nextLine();
 
 
-        for(int i=0;i<t;i++) {
-            String s = sc.nextLine();
-            if (s.length() <= 100 && s.length() > 2) {
-                ArrayList sorted = permutations(s);
-                Collections.sort(sorted);
+        for(int i1=0;i1<t;i1++) {
+            String line = sc.nextLine();
 
-                ListIterator iter = sorted.listIterator();
-                while (iter.hasNext()) {
-                    if ((s.compareTo(String.valueOf(iter.next()))) >= 0) {
-                        iter.remove();
+            if (line.length() <= 100 && line.length() > 1) {
+                char[] ind = line.toCharArray();
+
+                //ind is an array of integers
+                for(int tail = ind.length - 1;tail > 0;tail--){
+                    if (ind[tail - 1] < ind[tail]){//still increasing
+
+                        //find last element which does not exceed ind[tail-1]
+                        int s = ind.length - 1;
+                        while(ind[tail-1] >= ind[s])
+                            s--;
+
+                        swap(ind, tail-1, s);
+
+                        //reverse order of elements in the tail
+                        for(int i = tail, j = ind.length - 1; i < j; i++, j--){
+                            swap(ind, i, j);
+                        }
+                        break;
                     }
                 }
-
-                if (sorted.size() == 0)
+                if (line.compareTo( String.valueOf(ind) ) == 0) {
                     System.out.println("no answer");
-                else
-                    System.out.println(sorted.get(0));
+                } else {
+                    System.out.println(ind);
+                }
             }
-            else
-                System.out.println("no answer");
         }
         sc.close();
     }
