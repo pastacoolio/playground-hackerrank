@@ -28,7 +28,7 @@ public class Main {
                 for(int i1=0;i1<t;i1++) {
                     String line = sc.nextLine();
 
-                    if (line.length() <= 100 && line.length() > 1) {
+                    if (line.length() <= 100 && line.length() >= 1) {
                         char[] ind = line.toCharArray();
 
                         //ind is an array of integers
