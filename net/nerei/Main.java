@@ -10,12 +10,12 @@ import java.util.regex.*;
 public class Main {
 
     public static void main(String[] args) {
-        File file = new File("/home/rl/IdeaProjects/HackerRank/src/net/nerei/testcase1.input.txt");
+        File file = new File("/home/rl/IdeaProjects/HackerRank/src/net/nerei/test.txt");
 
         try {
             try (Scanner in = new Scanner(file)) {
 
-                try (PrintWriter writer = new PrintWriter("/home/rl/IdeaProjects/HackerRank/src/net/nerei/ouput.txt", "UTF-8")) {
+                try (PrintWriter writer = new PrintWriter("/home/rl/IdeaProjects/HackerRank/src/net/nerei/ouput.case0.txt", "UTF-8")) {
 
                     while (in.hasNextLine()) {
                         byte n = in.nextByte();
@@ -25,7 +25,7 @@ public class Main {
                             int sweets = in.nextInt();
                             int startId = in.nextInt();
 
-                            int newId = (startId + sweets - 1) % prisoners;
+                            int newId = (startId + sweets -1) % prisoners == 0 ? prisoners : (startId + sweets -1) % prisoners;
                             //System.out.println(newId);
                             writer.println(newId);
                         }
