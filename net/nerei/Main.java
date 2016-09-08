@@ -16,7 +16,7 @@ import java.util.regex.*;
  * -- using memory.
  * -- not using any external memory.
  *
- * eg: [2,1,4,5,1,4,2,2,4,1]
+ * eg: [2 1 4 5 1 4 2 2 4 1]
 */
 public class Main {
 
@@ -65,7 +65,7 @@ public class Main {
         /* Remove common bits (the bits that appear third time) from 'twos'
 
            Value of 'twos' will be set as 0, 3, 1 and 0 after 1st,
-           2nd, 3rd and 4th itearations respectively */
+           2nd, 3rd and 4th iterations respectively */
             twos &= common_bit_mask;
 
             // uncomment this code to see intermediate values
