@@ -10,11 +10,19 @@ import java.util.regex.*;
 public class Main {
 
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        int n = in.nextInt();
+        try (Scanner in = new Scanner(System.in)) {
+            byte n = in.nextByte();
 
+            for (int testCases = 0; testCases < n; testCases++) {
+                int prisoners = in.nextInt();
+                int sweets = in.nextInt();
+                int startId = in.nextInt();
 
+                int newId = (startId + sweets - 1) % prisoners;
+                System.out.println(newId);
+            }
 
-        in.close();
+            in.close();
+        }
     }
 }
