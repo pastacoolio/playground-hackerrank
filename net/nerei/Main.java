@@ -10,19 +10,31 @@ import java.util.regex.*;
 public class Main {
 
     public static void main(String[] args) {
-        try (Scanner in = new Scanner(System.in)) {
-            byte n = in.nextByte();
+        File file = new File("/home/rl/IdeaProjects/HackerRank/src/net/nerei/testcase1.input.txt");
 
-            for (int testCases = 0; testCases < n; testCases++) {
-                int prisoners = in.nextInt();
-                int sweets = in.nextInt();
-                int startId = in.nextInt();
+        try {
+            try (Scanner in = new Scanner(file)) {
 
-                int newId = (startId + sweets - 1) % prisoners;
-                System.out.println(newId);
+                try (PrintWriter writer = new PrintWriter("/home/rl/IdeaProjects/HackerRank/src/net/nerei/ouput.txt", "UTF-8")) {
+
+                    while (in.hasNextLine()) {
+                        byte n = in.nextByte();
+
+                        for (int testCases = 0; testCases < n; testCases++) {
+                            int prisoners = in.nextInt();
+                            int sweets = in.nextInt();
+                            int startId = in.nextInt();
+
+                            int newId = (startId + sweets - 1) % prisoners;
+                            //System.out.println(newId);
+                            writer.println(newId);
+                        }
+                    }
+                    in.close();
+                }
             }
-
-            in.close();
+        } catch (FileNotFoundException|UnsupportedEncodingException e) {
+            e.printStackTrace();
         }
     }
 }
