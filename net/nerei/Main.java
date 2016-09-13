@@ -13,7 +13,18 @@ public class Main {
         try (Scanner in = new Scanner(System.in)) {
             int n = in.nextInt();
 
+            int result = factorial(n);
+            System.out.println(result);
+
             in.close();
+        }
+    }
+
+    public static int factorial(int n) {
+        if (n == 0) {
+            return 1;
+        } else {
+            return n * factorial(n - 1);
         }
     }
 }
