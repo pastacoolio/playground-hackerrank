@@ -11,14 +11,19 @@ import java.util.regex.*;
 
 public class Main {
 
-    public static void main(String []args)
-    {
-        Scanner sc=new Scanner(System.in);
-        String title=sc.nextLine();
-        String author=sc.nextLine();
-        int price=sc.nextInt();
-        Book new_novel=new MyBook(title,author,price);
-        new_novel.display();
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+        sc.close();
 
+        Difference difference = new Difference(a);
+
+        difference.computeDifference();
+
+        System.out.print(difference.maximumDifference);
     }
 }
